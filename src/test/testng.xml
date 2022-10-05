@@ -1,0 +1,11 @@
+<suite name="TestsMobile" >
+
+    <!-- <parameter name="platform" value="android"/>-->
+
+    <test name="calcTests" group-by-instances="true">
+        <classes >
+            <class name = "TestCalculator"/>
+        </classes>
+    </test>
+
+</suite>
