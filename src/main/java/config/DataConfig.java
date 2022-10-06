@@ -18,5 +18,8 @@ public interface DataConfig extends Config {
 
     @Key("platform")
     String getPlatform();
+
+    @Key("deviceName")
+    String getDeviceName();
 }
 

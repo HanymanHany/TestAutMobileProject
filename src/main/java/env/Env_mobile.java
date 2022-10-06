@@ -30,7 +30,6 @@ public class Env_mobile{
         app = new File(data.getPathToApk());
         // get the configuration for the driver
         getConfiguration(data.getPlatform());
-        Configuration.pageLoadTimeout = Long.parseLong(System.getProperty("selenide.pageLoadTimeout", "2000"));
         // driver installation for selenide
         WebDriverRunner.setWebDriver(driver);
 
@@ -77,7 +76,7 @@ public class Env_mobile{
      */
     public AppiumDriver getAndroidDriver() throws MalformedURLException {
         DesiredCapabilities capabilities = commonCapabilities();
-        capabilities.setCapability("deviceName", "emulator-5554");
+        capabilities.setCapability("deviceName", data.getDeviceName());
         capabilities.setCapability("platformName", "android");
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("appPackage", "com.google.android.calculator");
