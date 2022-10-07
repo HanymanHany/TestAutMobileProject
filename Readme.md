@@ -1,6 +1,5 @@
 # README [About project]
-Technology stack
-Java, TestNg, Selenide, Maven, Allure, Appium/
+**Technology stack** - **Java, TestNg, Selenide, Maven, Allure, Appium**
 
 This is a project to automate the testing of mobile applications (in the example of an Android application). This project is necessary for beginners in mobile automation, and for those who want to start, but do not know where. The project can be used as the basis for your tests.
 Link to the article - Mobile application automation. Where to start?
