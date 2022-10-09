@@ -2,7 +2,6 @@ package screens;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import env.Env_mobile;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,7 +13,7 @@ import org.openqa.selenium.WebElement;
  *     @iOSXCUITFindBy(id = "loginBtn")
  *     public SelenideElement signInBtn;
  */
-public class MainScreenLocators extends Env_mobile{
+public class MainScreenLocators {
 
     @AndroidFindBy(id = "eq")
     public SelenideElement equalsBtn;

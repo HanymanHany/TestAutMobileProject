@@ -1,16 +1,15 @@
 package env;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import config.DataConfig;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -22,6 +21,7 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 public class Env_mobile{
     public AppiumDriver driver;
     File app;
+    AppiumDriverLocalService service;
     protected static final DataConfig data = ConfigFactory.create(DataConfig.class, System.getProperties());
     @BeforeSuite
     //Passing parameters from a file testng.xml
@@ -43,7 +43,12 @@ public class Env_mobile{
      */
     @AfterSuite
     private void tearDown(){
-        Selenide.closeWebDriver();
+        driver.quit();
+
+        // used to stop the appium server after tests have been completed
+      /**  if (service != null) {
+            service.stop();
+        } **/
     }
 
     /** getting the configuration for the desired platform
@@ -86,5 +91,16 @@ public class Env_mobile{
         return new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 
+    /** method for starting appium server automatically **/
+    public void upAppium(){
+        AppiumServiceBuilder appiumServiceBuilder = new AppiumServiceBuilder();
+        appiumServiceBuilder
+                .usingAnyFreePort()
+                .withArgument(() -> "--allow-insecure", "chromedriver_autodownload");
+        appiumServiceBuilder.withAppiumJS(new File("/home/hany/appium/server/app/main.js"));
+        service = AppiumDriverLocalService.buildService(appiumServiceBuilder);
+        service.start();
+
+    }
 
 }
