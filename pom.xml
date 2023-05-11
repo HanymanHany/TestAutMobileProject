@@ -11,7 +11,7 @@
     <properties>
         <javafaker.version>1.0.2</javafaker.version>
         <testng.version>7.6.0</testng.version>
-        <selenide.version>6.14.0</selenide.version>
+        <selenide.version>6.6.3</selenide.version>
         <owner.version>1.0.12</owner.version>
         <lombok.version>1.18.24</lombok.version>
         <allure.version>2.18.1</allure.version>
